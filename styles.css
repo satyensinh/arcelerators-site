@@ -136,12 +136,24 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
 .heroStats{ display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:20px; }
 .stat{
   border:1px solid var(--line);
-  background: color-mix(in oklab, var(--panel) 88%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 94%, transparent), color-mix(in oklab, var(--panel2) 90%, transparent));
   border-radius: 14px;
-  padding: 12px;
+  padding: 14px;
 }
-.statNum{ font-weight:900; color: var(--blue); font-size:18px; }
-.statText{ color: var(--muted); font-weight:600; font-size:13px; margin-top:6px; }
+.statLabel{
+  color: color-mix(in oklab, var(--blue) 78%, white);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.statText{
+  color: color-mix(in oklab, var(--text) 88%, var(--muted));
+  font-weight:650;
+  font-size:15px;
+  line-height:1.45;
+  margin-top:8px;
+}
 
 .heroCard{
   border:1px solid var(--line);
