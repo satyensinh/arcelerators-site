@@ -35,11 +35,48 @@
     });
   });
 
-  // Fake newsletter button (front-end only)
-  const subscribeBtn = document.getElementById("subscribeBtn");
-  subscribeBtn?.addEventListener("click", () => {
-    const email = document.getElementById("email")?.value?.trim();
-    if (!email) return alert("Please enter your email.");
-    alert("Thanks! (Hook this to your email provider later.)");
+  // Contact form -> mailto draft
+  const contactForm = document.getElementById("contactForm");
+  contactForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const fullName = document.getElementById("fullName")?.value?.trim();
+    const companyEmail = document.getElementById("companyEmail")?.value?.trim();
+    const projectType = document.getElementById("projectType")?.value?.trim();
+    const budgetRange = document.getElementById("budgetRange")?.value?.trim();
+    const timeline = document.getElementById("timeline")?.value?.trim();
+    const projectDetails = document.getElementById("projectDetails")?.value?.trim();
+    const consent = document.getElementById("consent")?.checked;
+
+    if (!fullName || !companyEmail || !projectType || !budgetRange || !timeline || !projectDetails) {
+      alert("Please complete all required fields.");
+      return;
+    }
+
+    if (!consent) {
+      alert("Please provide consent to be contacted by Arcelerators.");
+      return;
+    }
+
+    const subject = encodeURIComponent(`Project Inquiry: ${projectType}`);
+    const body = encodeURIComponent(
+      [
+        "New project inquiry",
+        "",
+        `Full Name: ${fullName}`,
+        `Company Email: ${companyEmail}`,
+        `Project Type: ${projectType}`,
+        `Budget Range (USD): ${budgetRange}`,
+        `Timeline: ${timeline}`,
+        "",
+        "Project Details:",
+        projectDetails,
+        "",
+        "Consent:",
+        "I consent to be contacted by Arcelerators",
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:arcelerators@gmail.com?subject=${subject}&body=${body}`;
   });
 })();
