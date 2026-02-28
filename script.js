@@ -77,6 +77,6 @@
       ].join("\n")
     );
 
-    window.location.href = `mailto:arcelerators@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contactus@arcelerators.com?subject=${subject}&body=${body}`;
   });
 })();
