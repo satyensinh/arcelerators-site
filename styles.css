@@ -258,9 +258,31 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
   align-items:start;
   margin-top:6px;
 }
+.contactForm{
+  grid-column: 1 / -1;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:14px;
+  align-items:start;
+}
+.contactForm .formField{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.contactForm .formField label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+}
 .miniForm input,
 .miniForm select,
-.miniForm textarea{
+.miniForm textarea,
+.contactForm input:not([type="checkbox"]),
+.contactForm select,
+.contactForm textarea{
+  display:block;
   width:100%;
   padding: 12px 12px;
   border-radius: 12px;
@@ -269,17 +291,29 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
   color: var(--text);
   font: inherit;
 }
-.miniForm select{ appearance:none; }
-.miniForm textarea{ resize: vertical; min-height: 132px; }
+.miniForm select,
+.contactForm select{
+  appearance:none;
+  -webkit-appearance:none;
+}
+.miniForm textarea,
+.contactForm textarea{
+  resize: vertical;
+  min-height: 132px;
+}
 .miniForm input:focus,
 .miniForm select:focus,
-.miniForm textarea:focus{
+.miniForm textarea:focus,
+.contactForm input:focus,
+.contactForm select:focus,
+.contactForm textarea:focus{
   outline: 2px solid color-mix(in oklab, var(--blue) 45%, transparent);
   outline-offset: 2px;
 }
 .formField{ display:flex; flex-direction:column; gap:8px; }
 .formField label{ font-size:14px; font-weight:700; }
-.formFieldFull{ grid-column: 1 / -1; }
+.formFieldFull,
+.contactForm .formFieldFull{ grid-column: 1 / -1; }
 .formActions{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 .checkboxField{
   display:flex;
@@ -290,6 +324,8 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
   color: var(--muted);
 }
 .checkboxField input{
+  appearance:auto;
+  -webkit-appearance:checkbox;
   width:18px;
   height:18px;
   margin-top:2px;
@@ -356,6 +392,6 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
   .btn{ width:100%; }
   .themeText{ display:inline; }
   .cards3, .cards4, .list2{ grid-template-columns: 1fr; }
-  .miniForm{ grid-template-columns: 1fr; }
+  .miniForm, .contactForm{ grid-template-columns: 1fr; }
   .formActions{ flex-direction:column; align-items:stretch; }
 }
