@@ -394,16 +394,70 @@
         </div>
 
         <div class="ctaActions">
-          <!-- Replace with your email / calendly -->
-          <a class="btn btnPrimary" href="mailto:arcelerators@gmail.com?subject=Consultation%20request">Request a consultation</a>
           <a class="btn btnSecondary" href="#case-studies">View representative engagements</a>
         </div>
 
-        <form class="miniForm" onsubmit="return false" aria-label="Newsletter signup (front-end only)">
-          <label for="email" class="srOnly">Email address</label>
-          <input id="email" type="email" placeholder="Email address" autocomplete="email" />
-          <button class="btn btnGhost" type="button" id="subscribeBtn">Subscribe</button>
-          <p class="fineprint">Rest assured, we do not spam.</p>
+        <form class="miniForm contactForm" id="contactForm" aria-label="Project inquiry form">
+          <div class="formField">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="formField">
+            <label for="companyEmail">Company Email</label>
+            <input id="companyEmail" name="companyEmail" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="formField">
+            <label for="projectType">Project Type</label>
+            <select id="projectType" name="projectType" required>
+              <option value="">Select project type</option>
+              <option value="Legacy Modernization">Legacy Modernization</option>
+              <option value="AI Integration">AI Integration</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="formField">
+            <label for="budgetRange">Budget Range (USD)</label>
+            <select id="budgetRange" name="budgetRange" required>
+              <option value="">Select budget range</option>
+              <option value="< 25K">&lt; 25K</option>
+              <option value="25K - 100K">25K - 100K</option>
+              <option value="100K - 250K">100K - 250K</option>
+              <option value="250K - 1M">250K - 1M</option>
+              <option value="> 1M">&gt; 1M</option>
+            </select>
+          </div>
+
+          <div class="formField">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="">Select timeline</option>
+              <option value="To be discussed">To be discussed</option>
+              <option value="1 - 3 Months">1 - 3 Months</option>
+              <option value="3 - 6 Months">3 - 6 Months</option>
+              <option value="6+ Months">6+ Months</option>
+            </select>
+          </div>
+
+          <div class="formField formFieldFull">
+            <label for="projectDetails">Project Details</label>
+            <textarea id="projectDetails" name="projectDetails" rows="5" required></textarea>
+          </div>
+
+          <div class="formField formFieldFull">
+            <label class="checkboxField" for="consent">
+              <input id="consent" name="consent" type="checkbox" required />
+              <span>I consent to be contacted by Arcelerators</span>
+            </label>
+          </div>
+
+          <div class="formField formFieldFull formActions">
+            <button class="btn btnPrimary" type="submit">Send Request</button>
+            <p class="fineprint">Your request will open an email draft addressed to arcelerators@gmail.com.</p>
+          </div>
         </form>
       </div>
     </section>

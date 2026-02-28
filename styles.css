@@ -252,19 +252,48 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
 
 .miniForm{
   grid-column: 1 / -1;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:center;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:14px;
+  align-items:start;
   margin-top:6px;
 }
-.miniForm input{
-  flex: 1 1 260px;
+.miniForm input,
+.miniForm select,
+.miniForm textarea{
+  width:100%;
   padding: 12px 12px;
   border-radius: 12px;
   border:1px solid var(--line);
   background: var(--panel);
   color: var(--text);
+  font: inherit;
+}
+.miniForm select{ appearance:none; }
+.miniForm textarea{ resize: vertical; min-height: 132px; }
+.miniForm input:focus,
+.miniForm select:focus,
+.miniForm textarea:focus{
+  outline: 2px solid color-mix(in oklab, var(--blue) 45%, transparent);
+  outline-offset: 2px;
+}
+.formField{ display:flex; flex-direction:column; gap:8px; }
+.formField label{ font-size:14px; font-weight:700; }
+.formFieldFull{ grid-column: 1 / -1; }
+.formActions{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.checkboxField{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  font-weight:600;
+  color: var(--muted);
+}
+.checkboxField input{
+  width:18px;
+  height:18px;
+  margin-top:2px;
+  flex: 0 0 auto;
 }
 .fineprint{ margin:0; color: var(--muted); font-size:12px; }
 .srOnly{ position:absolute; left:-9999px; }
@@ -327,4 +356,6 @@ h1{ font-size: clamp(34px, 4vw, 52px); line-height:1.05; margin:10px 0 12px; let
   .btn{ width:100%; }
   .themeText{ display:inline; }
   .cards3, .cards4, .list2{ grid-template-columns: 1fr; }
+  .miniForm{ grid-template-columns: 1fr; }
+  .formActions{ flex-direction:column; align-items:stretch; }
 }
